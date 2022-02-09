@@ -2,8 +2,6 @@
 #include <stdlib.h>
 #include <malloc.h>
 
-#define def_tostr(d) "#d"
-
 void welcome(char *task_name, char *description)
 {
     red_print(task_name);
@@ -154,13 +152,19 @@ void print_array(int *array, int length)
 void print_matrix(int **matrix, int M, int N)
 {
     for (int i = 0; i < M; ++i)
+    {
+        printf("\n");
         print_array(matrix[i], N);
+    }
 }
 
 void print_matrix_s(int M, int N, int matrix[M][N])
 {
     for (int i = 0; i < M; ++i)
+    {
+        printf("\n");
         print_array(matrix[i], N);
+    }
 }
 
 // * ///////////////
@@ -210,7 +214,7 @@ void input_array(int *array, int length)
 {
     const v = scan_variant("Вариант заполнения: ",
                            (char *[]){
-                               "заполнение случайными числами " def_tostr(default_min) "-" def_tostr(default_max),
+                               "заполнение случайными числами [10,99]",
                                "заполнение случайными числами в заданном интервале",
                                "ручной ввод"},
                            3);
@@ -235,7 +239,7 @@ void input_matrix(int **matrix, int M, int N)
 {
     int v = scan_variant("Вариант заполнения: ",
                          (char *[]){
-                             "заполнение случайными числами " def_tostr(default_min) "-" def_tostr(default_max),
+                             "заполнение случайными числами [10,99]",
                              "заполнение случайными числами в заданном интервале",
                              "ручной ввод"},
                          3);
@@ -260,7 +264,7 @@ void input_matrix_s(int M, int N, int matrix[M][N])
 {
     const v = scan_variant("Вариант заполнения: ",
                            (char *[]){
-                               "заполнение случайными числами " def_tostr(default_min) "-" def_tostr(default_max),
+                               "заполнение случайными числами [10,99]",
                                "заполнение случайными числами в заданном интервале",
                                "ручной ввод"},
                            3);
