@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <malloc.h>
 
-#define def_tostr(d) #d
+#define def_tostr(d) "#d"
 
 void welcome(char *task_name, char *description)
 {
@@ -108,7 +108,7 @@ void scan_matrix(int **matrix, int M, int N)
         scan_array(matrix[i], N);
 }
 
-void scan_matrix(int M, int N, int matrix[M][N])
+void scan_matrix_s(int M, int N, int matrix[M][N])
 {
     for (int i = 0; i < M; ++i)
         scan_array(matrix[i], N);
@@ -126,7 +126,7 @@ int *resize_array(int *array, int new_length)
     return (int *)realloc(array, new_length);
 }
 
-int *new_matrix(int M, int N)
+int **new_matrix(int M, int N)
 {
     int **matrix = (int **)malloc(M * sizeof(int *));
     for (int i = 0; i < M; ++i)
@@ -233,12 +233,12 @@ void input_array(int *array, int length)
 
 void input_matrix(int **matrix, int M, int N)
 {
-    const v = scan_variant("Вариант заполнения: ",
-                           (char *[]){
-                               "заполнение случайными числами " def_tostr(default_min) "-" def_tostr(default_max),
-                               "заполнение случайными числами в заданном интервале",
-                               "ручной ввод"},
-                           3);
+    int v = scan_variant("Вариант заполнения: ",
+                         (char *[]){
+                             "заполнение случайными числами " def_tostr(default_min) "-" def_tostr(default_max),
+                             "заполнение случайными числами в заданном интервале",
+                             "ручной ввод"},
+                         3);
 
     switch (v)
     {
